@@ -1,0 +1,19 @@
+LDR X 129	;Esta instrução carrega o valor da memória na posição 129 (ou seja, o valor armazenado na memória na posição 129) para o registrador X.
+
+RETORNA: 	;Salta de volta para a etiqueta "RETORNA"
+SUB X #9	;Subtrai 9 do valor no registrador X.
+JZ FIM		;Se o resultado da subtração anterior for zero, o programa salta para a etiqueta "FIM", que geralmente indica o final do programa.
+LDR X 129	;Carrega novamente o valor da memória na posição 129 para o registrador X.
+LDR A 130,X	;Carrega o valor da memória na posição indicada por X + 130 e armazena-o no registrador A.
+ADD X 128	;Adiciona 128 ao valor no registrador X.
+STR X 129	;Armazena o valor no registrador X de volta na memória na posição 129.
+SUB A 130,X	;Subtrai o valor no registrador X da memória na posição indicada por X + 130 e armazena o resultado no registrador A.
+JN MAIOR	;Se o resultado da subtração for negativo (ou seja, se o sinal estiver definido como negativo no registrador A), o programa salta para a etiqueta "MAIOR".
+JMP RETORNA	;Se o resultado da subtração não for negativo, o programa salta para a etiqueta "RETORNA".
+
+MAIOR:  	;Esta é uma etiqueta que indica o início de uma seção de código que trata do caso em que o resultado da subtração é negativo. Parece que ele está manipulando o valor de alguma forma.
+LDR A 130,X	;Carrega novamente o valor da memória na posição indicada por X + 130 e armazena-o no registrador A.
+STR A 127	;Armazena o valor no registrador A na memória na posição 127.
+JMP RETORNA	;Salta de volta para a etiqueta "RETORNA".
+
+FIM: HLT	;Esta é a etiqueta "FIM", que indica o final do programa. A instrução "HLT" geralmente significa "parar a execução do programa".
